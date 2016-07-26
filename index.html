@@ -1,8 +1,266 @@
 <style>
   /* Paste all of your CSS here. */
+  .transition, p, ul li i:before, ul li i:after {
+  transition: all 0.25s ease-in-out;
+}
+
+.flipIn, h1, ul li {
+  animation: flipdown 0.5s ease both;
+}
+
+.no-select, h2 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  perspective: 900;
+  overflow-y: scroll;
+  background-color: #dce7eb;
+  font-family: "Titillium Web", sans-serif;
+  color: rgba(48, 69, 92, 0.8);
+}
+
+body {
+  min-height: 0;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  margin: 90px 0;
+  transform: translate(-50%, 0);
+  box-shadow: 0 10px 0 0 #b03060 inset;
+  background-color: #fefffa;
+  max-width: 100%;
+  padding: 20px;
+}
+
+.image-container {
+  width: 200px;
+  float: left;
+  padding-right: 20px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.name {
+  font: helvetica;
+  font-size: 36px;
+  color: black;
+  line-height: 42px;
+}
+
+.quote {
+  font: helvetica;
+  font-size: 16px;
+  letter-spacing: 0px;
+  line-height: 30px;
+}
+
+.description {
+  font: helvetica;
+  font-size: 16px;
+  letter-spacing: 0px;
+  line-height: 30px;
+}
+
+h1 {
+  text-transform: uppercase;
+  color: black;
+  font-size: 36px;
+  line-height: 42px;
+  letter-spacing: 3px;
+  font-weight: 100;
+}
+
+h2 {
+  font-size: 20px;
+  color: #b03060;
+  line-height: 34px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  display: block;
+  background-color: #fefffa;
+  margin: 0;
+  cursor: pointer;
+}
+
+p {
+  color: rgba(48, 69, 92, 0.8);
+  font-size: 36px;
+  line-height: 42px;
+  letter-spacing: 2px;
+  font-weight: 100;
+  position: relative;
+/*   overflow: hidden; */
+  max-height: 1000px;
+  opacity: 1;
+  transform: translate(0, 0);
+  z-index: 2;
+}
+
+ul {
+  list-style: none;
+  perspective: 900;
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 0px;
+  padding-top: 26px;
+  border-top: 2px solid #dce7eb;
+}
+ul li:nth-of-type(1) {
+  animation-delay: 0.5s;
+}
+ul li:nth-of-type(2) {
+  animation-delay: 0.75s;
+}
+ul li:nth-of-type(3) {
+  animation-delay: 1s;
+}
+ul li:last-of-type {
+  padding-bottom: 0;
+}
+ul li i {
+  position: absolute;
+  transform: translate(-6px, 0);
+  margin-top: 14px;
+  right: 0;
+}
+ul li i:before, ul li i:after {
+  content: "";
+  position: absolute;
+  background-color: #b03060;
+  width: 3px;
+  height: 9px;
+}
+ul li i:before {
+  transform: translate(-2px, 0) rotate(45deg);
+}
+ul li i:after {
+  transform: translate(2px, 0) rotate(-45deg);
+}
+ul li input[type=checkbox] {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+}
+ul li input[type=checkbox]:checked ~ p {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  transform: translate(0, 50%);
+  font-size: 10px;
+}
+ul li input[type=checkbox]:checked ~ i:before {
+  transform: translate(2px, 0) rotate(45deg);
+}
+ul li input[type=checkbox]:checked ~ i:after {
+  transform: translate(-2px, 0) rotate(-45deg);
+}
+
+@keyframes flipdown {
+  0% {
+    opacity: 0;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  80% {
+    transform: rotateX(8deg);
+  }
+  83% {
+    transform: rotateX(6deg);
+  }
+  92% {
+    transform: rotateX(-3deg);
+  }
+  100% {
+    transform-origin: top center;
+    transform: rotateX(0deg);
+  }
+}
+
+@media (max-width: 550px) {
+  body {
+    box-sizing: border-box;
+    transform: translate(0, 0);
+    max-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    left: 0;
+  }
+  .image-container{
+     padding-right:10px; 
+  }
+}
+.image { float: left; }
+
 </style>
 
 <!-- Paste all of your HTML below. -->
+<h1>Cherubs Guinness Records</h1>
+<ul>
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>Who has traveled the furthest by foot in a day?</h2>
+    <p class="image-container"><img class="image" src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Poster-sized_portrait_of_Barack_Obama.jpg" width=200px height=auto></p>
+    <p class = "name"><b>JANE WILLIAMS</b> 
+      <br>traveled 14.99 miles</p>
+    <p class = "description">After working on a reporting story all day, Williams decided to decompress by going for a run. But on her search for the Shakespeare Garden, she got lost. </p>
+    <p class = "quote">"I ran up and down the campus going around the same build," Jane said. "Finally when I found it, it was so small. It wasn't a relaxing run. I was disappointed."</p>
+    
+  </li>
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>Who has been spit listed the most?</h2>
+     <p class="image-container"><img class="image" src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Poster-sized_portrait_of_Barack_Obama.jpg" width=200px height=auto></p>
+    <p class = "name"><b>AMANDA ROOKER</b> 
+      <br>was spit listed eight times</p>
+    <p class = "description">When Rooker came to Cherubs, she expected to be one of the students who never got spit listed. Be on time to class,  stay on your floor after floor hours, don't jaywalk. It sounded easy to Rooker at first. She was wrong. 
+</p>
+    <p class = "quote">"One time I got spit listed for missing spit list," Rooker said. "It's become a routine for me, but not one that I like."</p>
+  </li>
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>Who had the longest transcription notes?</h2>
+    
+     <p class="image-container"><img class="image" src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Poster-sized_portrait_of_Barack_Obama.jpg" width=200px height=auto></p>
+    <p class = "name"><b>EMMA MITNICK</b> 
+      <br>wrote a 20377 words transcription</p>
+    <p class = "description"> Mitnick spoke with a sexual education trainer for 40 minutes. Only 17 of the 20377 words made it to her final draft. </p>
+    <p class = "quote">"This woman just went on and on," Mitnick said. "I tried cutting her off, but she wouldn't let me. So I let her talk, and it took me forever to transcribe." </p>
+  </li>
+   <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>Who had the most number of sources that didn't call back?</h2>
+     <p class="image-container"><img class="image" src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Poster-sized_portrait_of_Barack_Obama.jpg" width=200px height=auto></p>
+    <p class = "name"><b>SAMANTHA MEADE</b> 
+      <br>called 45 sources who didn't call back</p>
+    <p class = "description">When Meade called doctors for her trend story on oral immunotherapy, she was often sent to the voice mailbox of her sources. She said every time she heard the voice message options like "if you are having a medical emergency, please call 911" or “please pick up your prescription” she didn’t know what to do and felt "guilty" using those extension lines.
+  </p>
+    <p class = "quote">"I didn't need 911 and I didn’t have an allergy attack," Meade said. "I was just a poor journalist who needed a quote."</p>
+  </li>
+</ul>
 
 <script>
   // Paste all of your Javascript below.
